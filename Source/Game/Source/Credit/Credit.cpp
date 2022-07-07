@@ -101,7 +101,7 @@ int credit() {
 	using namespace engine;
 	engine::log("START");
 
-	int caseCredit = 4;
+	int caseCredit = 10;
 
 	if (caseCredit == 1)
 	{
@@ -255,7 +255,7 @@ int credit() {
 		engine::log("all credit: " + std::to_string(cost));
 
 		Credit credit0(540000, 0.0f, 45000);
-		Credit credit12((cost - 540000), 12.0f, 95000); // 5 лет
+		Credit credit12((cost - 540000), 5.0f, 95000); // 5 лет
 
 		bool state = true;
 		while (state) {
@@ -315,6 +315,445 @@ int credit() {
 
 		Credit credit0(540000, 0.0f, 45000);
 		Credit credit12((cost - 540000), 12.0f, 95000); // 5 лет
+
+		bool state = true;
+		while (state) {
+			static bool addMin0 = false;
+			if (!credit0.state && !addMin0) {
+				credit12.min += credit0.min;
+				addMin0 = true;
+			}
+
+			bool state0 = credit0.update();
+			bool state12 = credit12.update();
+
+			if (state0 || state12) {
+				state = true;
+			}
+			else {
+				state = false;
+			}
+		}
+
+		credit0.normalize();
+		credit12.normalize();
+
+		size_t maxSize = credit0.log.size();
+		maxSize = credit12.log.size() > maxSize ? credit12.log.size() : maxSize;
+
+		credit0.normalizeVector(maxSize);
+		credit12.normalizeVector(maxSize);
+
+		size_t index = 0;
+		while (index < credit0.log.size() || index < credit12.log.size()) {
+			std::string text;
+			text += credit0.log[index] + "\t" + credit12.log[index];
+			++index;
+
+			engine::log(text);
+		}
+
+		int pereplate = credit0.pereplata + credit12.pereplata;
+		engine::log("Pereplata: " + std::to_string(pereplate));
+
+		int moynthMax = credit0.mounth;
+		moynthMax = credit12.mounth > moynthMax ? credit12.mounth : moynthMax;
+		engine::log("Year: " + std::to_string((float)moynthMax / 12.0f) + " (" + std::to_string(moynthMax) + ")");
+
+		int payMax = credit0.min;
+		payMax = credit12.min > payMax ? credit12.min : payMax;
+		engine::log("payMax: " + std::to_string(payMax));
+	}
+	
+	if (caseCredit == 4)
+	{
+		int cost = 10128240 - 5000000;
+
+		engine::log("cost: 10128240");
+		engine::log("all credit: " + std::to_string(cost));
+
+		Credit credit0(540000, 0.0f, 45000);
+		Credit credit12((cost - 540000), 12.0f, 95000); // 5 лет
+
+		bool state = true;
+		while (state) {
+			static bool addMin0 = false;
+			if (!credit0.state && !addMin0) {
+				credit12.min += credit0.min;
+				addMin0 = true;
+			}
+
+			bool state0 = credit0.update();
+			bool state12 = credit12.update();
+
+			if (state0 || state12) {
+				state = true;
+			}
+			else {
+				state = false;
+			}
+		}
+
+		credit0.normalize();
+		credit12.normalize();
+
+		size_t maxSize = credit0.log.size();
+		maxSize = credit12.log.size() > maxSize ? credit12.log.size() : maxSize;
+
+		credit0.normalizeVector(maxSize);
+		credit12.normalizeVector(maxSize);
+
+		size_t index = 0;
+		while (index < credit0.log.size() || index < credit12.log.size()) {
+			std::string text;
+			text += credit0.log[index] + "\t" + credit12.log[index];
+			++index;
+
+			engine::log(text);
+		}
+
+		int pereplate = credit0.pereplata + credit12.pereplata;
+		engine::log("Pereplata: " + std::to_string(pereplate));
+
+		int moynthMax = credit0.mounth;
+		moynthMax = credit12.mounth > moynthMax ? credit12.mounth : moynthMax;
+		engine::log("Year: " + std::to_string((float)moynthMax / 12.0f) + " (" + std::to_string(moynthMax) + ")");
+
+		int payMax = credit0.min;
+		payMax = credit12.min > payMax ? credit12.min : payMax;
+		engine::log("payMax: " + std::to_string(payMax));
+	}
+
+	if (caseCredit == 5)
+	{
+		int cost = 10128240 - 5000000;
+
+		engine::log("cost: 10128240");
+		engine::log("all credit: " + std::to_string(cost));
+
+		Credit credit0(540000, 0.0f, 45000);
+		Credit credit16(cost - (540000 + 3000000), 15.9f, 73766);
+		Credit credit6(3000000, 5.85f, 21234); // 21 234 20 лет
+
+		bool state = true;
+		while (state) {
+			static bool addMin0 = false;
+			if (!credit0.state && !addMin0) {
+				credit16.min += credit0.min;
+				addMin0 = true;
+			}
+
+			static bool addMin16 = false;
+			if (!credit16.state && !addMin16) {
+				credit6.min += credit16.min;
+				addMin16 = true;
+			}
+
+			bool state0 = credit0.update();
+			bool state16 = credit16.update();
+			bool state6 = credit6.update();
+
+			if (state0 || state16 || state6) {
+				state = true;
+			}
+			else {
+				state = false;
+			}
+		}
+
+		credit0.normalize();
+		credit16.normalize();
+		credit6.normalize();
+
+		size_t maxSize = credit0.log.size();
+		maxSize = credit6.log.size() > maxSize ? credit6.log.size() : maxSize;
+		maxSize = credit16.log.size() > maxSize ? credit16.log.size() : maxSize;
+
+		credit0.normalizeVector(maxSize);
+		credit6.normalizeVector(maxSize);
+		credit16.normalizeVector(maxSize);
+
+		size_t index = 0;
+		while (index < credit0.log.size() || index < credit16.log.size() || index < credit6.log.size()) {
+			std::string text;
+			text += credit0.log[index] + "\t" + credit16.log[index] + "\t" + credit6.log[index];
+			++index;
+
+			engine::log(text);
+		}
+
+		int pereplate = credit0.pereplata + credit16.pereplata + credit6.pereplata;
+		engine::log("Pereplata: " + std::to_string(pereplate));
+
+		int moynthMax = credit0.mounth;
+		moynthMax = credit16.mounth > moynthMax ? credit16.mounth : moynthMax;
+		moynthMax = credit6.mounth > moynthMax ? credit6.mounth : moynthMax;
+		engine::log("Year: " + std::to_string((float)moynthMax / 12.0f) + " (" + std::to_string(moynthMax) + ")");
+
+		int payMax = credit0.min;
+		payMax = credit16.min > payMax ? credit16.min : payMax;
+		payMax = credit6.min > payMax ? credit6.min : payMax;
+		engine::log("payMax: " + std::to_string(payMax));
+	}
+
+	if (caseCredit == 6)
+	{
+		int cost = 10128240 - 5000000;
+
+		engine::log("cost: 10128240");
+		engine::log("all credit: " + std::to_string(cost));
+
+		Credit credit0(540000, 0.0f, 45000);
+		Credit credit16(cost - (540000 + 3000000), 15.9f, 63766); // 73766
+		Credit credit6(3000000, 5.85f, 21234); // 21 234 20 лет
+
+		bool state = true;
+		while (state) {
+			static bool addMin0 = false;
+			if (!credit0.state && !addMin0) {
+				credit16.min += credit0.min;
+				addMin0 = true;
+			}
+
+			static bool addMin16 = false;
+			if (!credit16.state && !addMin16) {
+				credit6.min += credit16.min;
+				addMin16 = true;
+			}
+
+			bool state0 = credit0.update();
+			bool state16 = credit16.update();
+			bool state6 = credit6.update();
+
+			if (state0 || state16 || state6) {
+				state = true;
+			}
+			else {
+				state = false;
+			}
+		}
+
+		credit0.normalize();
+		credit16.normalize();
+		credit6.normalize();
+
+		size_t maxSize = credit0.log.size();
+		maxSize = credit6.log.size() > maxSize ? credit6.log.size() : maxSize;
+		maxSize = credit16.log.size() > maxSize ? credit16.log.size() : maxSize;
+
+		credit0.normalizeVector(maxSize);
+		credit6.normalizeVector(maxSize);
+		credit16.normalizeVector(maxSize);
+
+		size_t index = 0;
+		while (index < credit0.log.size() || index < credit16.log.size() || index < credit6.log.size()) {
+			std::string text;
+			text += credit0.log[index] + "\t" + credit16.log[index] + "\t" + credit6.log[index];
+			++index;
+
+			engine::log(text);
+		}
+
+		int pereplate = credit0.pereplata + credit16.pereplata + credit6.pereplata;
+		engine::log("Pereplata: " + std::to_string(pereplate));
+
+		int moynthMax = credit0.mounth;
+		moynthMax = credit16.mounth > moynthMax ? credit16.mounth : moynthMax;
+		moynthMax = credit6.mounth > moynthMax ? credit6.mounth : moynthMax;
+		engine::log("Year: " + std::to_string((float)moynthMax / 12.0f) + " (" + std::to_string(moynthMax) + ")");
+
+		int payMax = credit0.min;
+		payMax = credit16.min > payMax ? credit16.min : payMax;
+		payMax = credit6.min > payMax ? credit6.min : payMax;
+		engine::log("payMax: " + std::to_string(payMax));
+	}
+
+	if (caseCredit == 7)
+	{
+		int cost = 9602011 - 5000000;
+
+		engine::log("cost: 9602011");
+		engine::log("all credit: " + std::to_string(cost));
+
+		Credit credit0(540000, 0.0f, 45000);
+		Credit credit12((cost - 540000), 12.0f, 85000); // 5 лет // 95000
+
+		bool state = true;
+		while (state) {
+			static bool addMin0 = false;
+			if (!credit0.state && !addMin0) {
+				credit12.min += credit0.min;
+				addMin0 = true;
+			}
+
+			bool state0 = credit0.update();
+			bool state12 = credit12.update();
+
+			if (state0 || state12) {
+				state = true;
+			}
+			else {
+				state = false;
+			}
+		}
+
+		credit0.normalize();
+		credit12.normalize();
+
+		size_t maxSize = credit0.log.size();
+		maxSize = credit12.log.size() > maxSize ? credit12.log.size() : maxSize;
+
+		credit0.normalizeVector(maxSize);
+		credit12.normalizeVector(maxSize);
+
+		size_t index = 0;
+		while (index < credit0.log.size() || index < credit12.log.size()) {
+			std::string text;
+			text += credit0.log[index] + "\t" + credit12.log[index];
+			++index;
+
+			engine::log(text);
+		}
+
+		int pereplate = credit0.pereplata + credit12.pereplata;
+		engine::log("Pereplata: " + std::to_string(pereplate));
+
+		int moynthMax = credit0.mounth;
+		moynthMax = credit12.mounth > moynthMax ? credit12.mounth : moynthMax;
+		engine::log("Year: " + std::to_string((float)moynthMax / 12.0f) + " (" + std::to_string(moynthMax) + ")");
+
+		int payMax = credit0.min;
+		payMax = credit12.min > payMax ? credit12.min : payMax;
+		engine::log("payMax: " + std::to_string(payMax));
+	}
+
+	if (caseCredit == 8)
+	{
+		int cost = 10991700 - 5000000;
+
+		engine::log("cost: 10991700");
+		engine::log("all credit: " + std::to_string(cost));
+
+		Credit credit0(540000, 0.0f, 45000);
+		Credit credit12((cost - 540000), 12.0f, 95000); // 5 лет // 95000
+
+		bool state = true;
+		while (state) {
+			static bool addMin0 = false;
+			if (!credit0.state && !addMin0) {
+				credit12.min += credit0.min;
+				addMin0 = true;
+			}
+
+			bool state0 = credit0.update();
+			bool state12 = credit12.update();
+
+			if (state0 || state12) {
+				state = true;
+			}
+			else {
+				state = false;
+			}
+		}
+
+		credit0.normalize();
+		credit12.normalize();
+
+		size_t maxSize = credit0.log.size();
+		maxSize = credit12.log.size() > maxSize ? credit12.log.size() : maxSize;
+
+		credit0.normalizeVector(maxSize);
+		credit12.normalizeVector(maxSize);
+
+		size_t index = 0;
+		while (index < credit0.log.size() || index < credit12.log.size()) {
+			std::string text;
+			text += credit0.log[index] + "\t" + credit12.log[index];
+			++index;
+
+			engine::log(text);
+		}
+
+		int pereplate = credit0.pereplata + credit12.pereplata;
+		engine::log("Pereplata: " + std::to_string(pereplate));
+
+		int moynthMax = credit0.mounth;
+		moynthMax = credit12.mounth > moynthMax ? credit12.mounth : moynthMax;
+		engine::log("Year: " + std::to_string((float)moynthMax / 12.0f) + " (" + std::to_string(moynthMax) + ")");
+
+		int payMax = credit0.min;
+		payMax = credit12.min > payMax ? credit12.min : payMax;
+		engine::log("payMax: " + std::to_string(payMax));
+	}
+
+	if (caseCredit == 9)
+	{
+		int cost = 10183050 - 5000000;
+
+		engine::log("cost: 10183050");
+		engine::log("all credit: " + std::to_string(cost));
+
+		Credit credit0(540000, 0.0f, 45000);
+		Credit credit12((cost - 540000), 12.0f, 95000); // 5 лет // 95000
+
+		bool state = true;
+		while (state) {
+			static bool addMin0 = false;
+			if (!credit0.state && !addMin0) {
+				credit12.min += credit0.min;
+				addMin0 = true;
+			}
+
+			bool state0 = credit0.update();
+			bool state12 = credit12.update();
+
+			if (state0 || state12) {
+				state = true;
+			}
+			else {
+				state = false;
+			}
+		}
+
+		credit0.normalize();
+		credit12.normalize();
+
+		size_t maxSize = credit0.log.size();
+		maxSize = credit12.log.size() > maxSize ? credit12.log.size() : maxSize;
+
+		credit0.normalizeVector(maxSize);
+		credit12.normalizeVector(maxSize);
+
+		size_t index = 0;
+		while (index < credit0.log.size() || index < credit12.log.size()) {
+			std::string text;
+			text += credit0.log[index] + "\t" + credit12.log[index];
+			++index;
+
+			engine::log(text);
+		}
+
+		int pereplate = credit0.pereplata + credit12.pereplata;
+		engine::log("Pereplata: " + std::to_string(pereplate));
+
+		int moynthMax = credit0.mounth;
+		moynthMax = credit12.mounth > moynthMax ? credit12.mounth : moynthMax;
+		engine::log("Year: " + std::to_string((float)moynthMax / 12.0f) + " (" + std::to_string(moynthMax) + ")");
+
+		int payMax = credit0.min;
+		payMax = credit12.min > payMax ? credit12.min : payMax;
+		engine::log("payMax: " + std::to_string(payMax));
+	}
+
+	if (caseCredit == 10)
+	{
+		int cost = 10991700 - 5000000;
+
+		engine::log("cost: 10183050");
+		engine::log("all credit: " + std::to_string(cost));
+
+		Credit credit0(540000, 0.0f, 45000);
+		Credit credit12((cost - 540000), 5.0f, 95000); // 5 лет // 95000
 
 		bool state = true;
 		while (state) {
