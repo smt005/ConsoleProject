@@ -1,10 +1,10 @@
 
 #include "main/Execution.h"
-
-
-#define MAIN_FUNCTION test
+#include "Config.h"
 
 #include "Test/Test.h"
+#include "Credit/Credit.h"
+#include "Neuron/Neuron.h"
 
 int Execution::run() {
 	return MAIN_FUNCTION();

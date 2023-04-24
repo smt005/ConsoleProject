@@ -1,5 +1,8 @@
 #pragma once
 
+#include "main/Config.h"
+#if MAIN_FUNCTION == credit
+
 #include <vector>
 
 class Net {
@@ -12,3 +15,5 @@ public:
 };
 
 int Neuron();
+
+#endif

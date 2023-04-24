@@ -1,6 +1,8 @@
 #include "Test/Test.h"
 #include "Common/Console.h"
 
+#if MAIN_FUNCTION == test
+
 int test() {
 	using namespace engine;
 	std::cout << "START" << std::endl;
@@ -26,3 +28,5 @@ int test() {
 	enterText("FINISH, ENTER to close.");
 	return 0;
 }
+
+#endif

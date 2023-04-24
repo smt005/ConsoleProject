@@ -1,3 +1,6 @@
+
+#if MAIN_FUNCTION == credit
+
 #include "Credit/Credit.h"
 #include "Common/Console.h"
 
@@ -368,3 +371,5 @@ int credit() {
 	enterText("FINISH, ENTER to close.");
 	return 0;
 }
+
+#endif
