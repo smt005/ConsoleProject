@@ -12,5 +12,8 @@ source_group(TREE ${GAME_SOURCE} TREE PREFIX "" FILES ${INCLUDES} ${SOURCES})
 include_directories(${ENGINE_SOURCE})
 include_directories(${BRAIN_SOURCE})
 
+# ThirdPathy
+include_directories(${JSONCPP_INCLUDES})
+
 # Создание статической библиотеки
 add_library(${GAME_NAME} STATIC ${INCLUDES} ${SOURCES})

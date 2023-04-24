@@ -1,0 +1,6 @@
+{
+  "camera": {
+    "class": "CameraControl",
+    "current": true
+    }
+}
